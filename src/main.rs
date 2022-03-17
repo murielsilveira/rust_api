@@ -12,7 +12,7 @@ fn guessing_game() {
   let secret = rand::thread_rng().gen_range(1..11);
   println!("The secret number is {} 🤫", secret);
 
-  loop {
+  'game: loop {
     println!("Type a natural number and press enter:");
 
     let mut guess = String::new();
@@ -21,7 +21,7 @@ fn guessing_game() {
       .expect("Failed to read line");
     let guess: u32 = match guess.trim().parse() {
       Ok(number) => number,
-      Err(_) => continue,
+      Err(_) => continue 'game,
     };
 
     match guess.cmp(&secret) {
@@ -29,7 +29,7 @@ fn guessing_game() {
       Ordering::Greater => println!("Too big"),
       Ordering::Equal => {
         println!("Nice guess! 🎊");
-        break;
+        break 'game;
       },
     }
   }
