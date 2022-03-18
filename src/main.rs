@@ -1,9 +1,14 @@
+#![allow(dead_code)]
+
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-  guessing_game();
+  // guessing_game();
+  for n in 0..9 {
+    print!("{} ", nth_fibonacci(n));
+  }
 }
 
 fn guessing_game() {
@@ -33,4 +38,14 @@ fn guessing_game() {
       },
     }
   }
+}
+
+fn nth_fibonacci(n: u32) -> u32 {
+  if n == 0 {
+    return 0;
+  }
+  if n <= 2 {
+    return 1;
+  }
+  return nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
 }
