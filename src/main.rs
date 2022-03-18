@@ -6,9 +6,8 @@ use std::io;
 
 fn main() {
   // guessing_game();
-  for n in 0..9 {
-    print!("{} ", nth_fibonacci(n));
-  }
+  // print_some_fibonacci_numbers();
+  convert_temperatures();
 }
 
 fn guessing_game() {
@@ -40,6 +39,13 @@ fn guessing_game() {
   }
 }
 
+fn print_some_fibonacci_numbers() {
+  for n in 0..9 {
+    print!("{} ", nth_fibonacci(n));
+  }
+  println!();
+}
+
 fn nth_fibonacci(n: u32) -> u32 {
   if n == 0 {
     return 0;
@@ -48,4 +54,19 @@ fn nth_fibonacci(n: u32) -> u32 {
     return 1;
   }
   return nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
+}
+
+fn convert_temperatures() {
+  let celsius = 0.0;
+  let fahrenheit = 32.0;
+  println!("{:.1}°C = {:.1}°F", celsius, convert_celsius_to_fahrenheit(celsius));
+  println!("{:.1}°F = {:.1}°C", fahrenheit, convert_fahrenheit_to_celsius(fahrenheit));
+}
+
+fn convert_celsius_to_fahrenheit(celsius: f32) -> f32 {
+  celsius * 1.8 + 32.0
+}
+
+fn convert_fahrenheit_to_celsius(fahrenheit: f32) -> f32 {
+  (fahrenheit - 32.0) / 1.8
 }
