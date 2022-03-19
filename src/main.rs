@@ -114,8 +114,16 @@ fn printing_structs() {
     value: 10.0,
     scale: 'F',
   };
-  println!("Debug print:   {:?}", t);
+  let r = Rectangle {
+    width: 50,
+    height: 40,
+  };
+
+  println!("Debug print: {:?}", t);
   println!("Display print: {}", t);
+  println!("Pretty debug print: {:#?}", t);
+  dbg!(&r);
+  let _a = dbg!(area(&r));
 }
 
 #[derive(Debug)]
@@ -129,4 +137,14 @@ impl fmt::Display for Temperature {
   fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
     write!(f, "{}°{}", self.value, self.scale)
   }
+}
+
+#[derive(Debug)]
+struct Rectangle {
+  width: u32,
+  height: u32,
+}
+
+fn area(rectange: &Rectangle) -> u32 {
+  rectange.width * rectange.height
 }
