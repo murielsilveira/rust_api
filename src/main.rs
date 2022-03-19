@@ -114,16 +114,24 @@ fn printing_structs() {
     value: 10.0,
     scale: 'F',
   };
-  let r = Rectangle {
+  let r1 = Rectangle {
     width: 50,
     height: 40,
+  };
+  let r2 = Rectangle {
+    width: 51,
+    height: 2,
   };
 
   println!("Debug print: {:?}", t);
   println!("Display print: {}", t);
   println!("Pretty debug print: {:#?}", t);
-  dbg!(&r);
-  let _ = dbg!(r.area());
+
+  dbg!(&r1);
+  let _ = dbg!(r1.area());
+
+  println!("{} can hold {}: {}", r1, r1, r1.can_hold(&r1));
+  println!("{} can hold {}: {}", r1, r2, r1.can_hold(&r2));
 }
 
 #[derive(Debug)]
@@ -145,8 +153,18 @@ struct Rectangle {
   height: u32,
 }
 
+impl fmt::Display for Rectangle {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    write!(f, "Rect({}, {})", self.width, self.height)
+  }
+}
+
 impl Rectangle {
   fn area(&self) -> u32 {
     self.width * self.height
+  }
+
+  fn can_hold(&self, r: &Rectangle) -> bool {
+    self.width >= r.width && self.height >= r.height
   }
 }
