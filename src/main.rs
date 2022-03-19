@@ -60,8 +60,16 @@ fn nth_fibonacci(n: u32) -> u32 {
 fn convert_temperatures() {
   let celsius = 0.0;
   let fahrenheit = 32.0;
-  println!("{:.1}°C = {:.1}°F", celsius, convert_celsius_to_fahrenheit(celsius));
-  println!("{:.1}°F = {:.1}°C", fahrenheit, convert_fahrenheit_to_celsius(fahrenheit));
+  println!(
+    "{:.1}°C = {:.1}°F",
+    celsius,
+    convert_celsius_to_fahrenheit(celsius)
+  );
+  println!(
+    "{:.1}°F = {:.1}°C",
+    fahrenheit,
+    convert_fahrenheit_to_celsius(fahrenheit)
+  );
 }
 
 fn convert_celsius_to_fahrenheit(celsius: f32) -> f32 {
