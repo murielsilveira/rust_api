@@ -2,13 +2,15 @@
 
 use rand::Rng;
 use std::cmp::Ordering;
+use std::fmt;
 use std::io;
 
 fn main() {
   // guessing_game();
   // print_some_fibonacci_numbers();
   // convert_temperatures();
-  play_with_string_slices();
+  // play_with_string_slices();
+  printing_structs();
 }
 
 fn guessing_game() {
@@ -105,4 +107,26 @@ fn first_word(s: &str) -> &str {
   }
 
   &s[..]
+}
+
+fn printing_structs() {
+  let t = Temperature {
+    value: 10.0,
+    scale: 'F',
+  };
+  println!("Debug print:   {:?}", t);
+  println!("Display print: {}", t);
+}
+
+#[derive(Debug)]
+struct Temperature {
+  value: f32,
+  scale: char,
+}
+
+// Implement the fmt::Display trait, so we can use `{}` marker on print functions.
+impl fmt::Display for Temperature {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    write!(f, "{}°{}", self.value, self.scale)
+  }
 }
