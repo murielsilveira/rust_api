@@ -118,10 +118,7 @@ fn printing_structs() {
     width: 50,
     height: 40,
   };
-  let r2 = Rectangle {
-    width: 51,
-    height: 2,
-  };
+  let r2 = Rectangle::square(50);
 
   println!("Debug print: {:?}", t);
   println!("Display print: {}", t);
@@ -160,6 +157,13 @@ impl fmt::Display for Rectangle {
 }
 
 impl Rectangle {
+  fn square(size: u32) -> Rectangle {
+    Rectangle {
+      width: size,
+      height: size,
+    }
+  }
+
   fn area(&self) -> u32 {
     self.width * self.height
   }
