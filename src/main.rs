@@ -110,38 +110,21 @@ fn first_word(s: &str) -> &str {
 }
 
 fn printing_structs() {
-  let t = Temperature {
-    value: 10.0,
-    scale: 'F',
-  };
   let r1 = Rectangle {
     width: 50,
     height: 40,
   };
   let r2 = Rectangle::square(50);
 
-  println!("Debug print: {:?}", t);
-  println!("Display print: {}", t);
-  println!("Pretty debug print: {:#?}", t);
+  println!("Debug print: {:?}", r1);
+  println!("Display print: {}", r1);
+  println!("Pretty debug print: {:#?}", r1);
 
   dbg!(&r1);
   let _ = dbg!(r1.area());
 
   println!("{} can hold {}: {}", r1, r1, r1.can_hold(&r1));
   println!("{} can hold {}: {}", r1, r2, r1.can_hold(&r2));
-}
-
-#[derive(Debug)]
-struct Temperature {
-  value: f32,
-  scale: char,
-}
-
-// Implement the fmt::Display trait, so we can use `{}` marker on print functions.
-impl fmt::Display for Temperature {
-  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-    write!(f, "{}°{}", self.value, self.scale)
-  }
 }
 
 #[derive(Debug)]
