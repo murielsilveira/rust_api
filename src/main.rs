@@ -7,7 +7,8 @@ use std::io;
 fn main() {
   // guessing_game();
   // print_some_fibonacci_numbers();
-  convert_temperatures();
+  // convert_temperatures();
+  play_with_string_slices();
 }
 
 fn guessing_game() {
@@ -69,4 +70,31 @@ fn convert_celsius_to_fahrenheit(celsius: f32) -> f32 {
 
 fn convert_fahrenheit_to_celsius(fahrenheit: f32) -> f32 {
   (fahrenheit - 32.0) / 1.8
+}
+
+fn play_with_string_slices() {
+  let a = String::from("abc🤮 efg");
+
+  println!("{}", first_word(&a));
+
+  for (i, c) in a.as_bytes().iter().enumerate() {
+    println!("{} - {}", i, c);
+  }
+
+  // Taking a string slice in the middle of a utf-8
+  // character compiles but fails at runtime.
+  // let b = &a[..5];
+  // println!("{}", b);
+}
+
+// also valid, but less flexible and idiomatic
+// fn first_word(s: &String) -> &str {
+fn first_word(s: &str) -> &str {
+  for (i, &item) in s.as_bytes().iter().enumerate() {
+    if item == b' ' {
+      return &s[0..i];
+    }
+  }
+
+  &s[..]
 }
