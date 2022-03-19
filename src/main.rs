@@ -123,7 +123,7 @@ fn printing_structs() {
   println!("Display print: {}", t);
   println!("Pretty debug print: {:#?}", t);
   dbg!(&r);
-  let _a = dbg!(area(&r));
+  let _ = dbg!(r.area());
 }
 
 #[derive(Debug)]
@@ -145,6 +145,8 @@ struct Rectangle {
   height: u32,
 }
 
-fn area(rectange: &Rectangle) -> u32 {
-  rectange.width * rectange.height
+impl Rectangle {
+  fn area(&self) -> u32 {
+    self.width * self.height
+  }
 }
