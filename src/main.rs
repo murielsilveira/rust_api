@@ -5,28 +5,11 @@ use std::fmt;
 mod learn;
 
 fn main() {
-  learn::guessing_game::start();
-  // print_some_fibonacci_numbers();
+  // learn::guessing_game::start();
+  learn::fibonacci::print_first_ten();
   // convert_temperatures();
   // play_with_string_slices();
   // printing_structs();
-}
-
-fn print_some_fibonacci_numbers() {
-  for n in 0..9 {
-    print!("{} ", nth_fibonacci(n));
-  }
-  println!();
-}
-
-fn nth_fibonacci(n: u32) -> u32 {
-  if n == 0 {
-    return 0;
-  }
-  if n <= 2 {
-    return 1;
-  }
-  return nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
 }
 
 fn convert_temperatures() {
