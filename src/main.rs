@@ -7,36 +7,9 @@ mod learn;
 fn main() {
   // learn::guessing_game::start();
   // learn::fibonacci::print_first_ten();
-  learn::temperature::print_conversions();
-  // play_with_string_slices();
+  // learn::temperature::print_conversions();
+  learn::slices::print_randon_string_slices_info();
   // printing_structs();
-}
-
-fn play_with_string_slices() {
-  let a = String::from("abc🤮 efg");
-
-  println!("{}", first_word(&a));
-
-  for (i, c) in a.as_bytes().iter().enumerate() {
-    println!("{} - {}", i, c);
-  }
-
-  // Taking a string slice in the middle of a utf-8
-  // character compiles but fails at runtime.
-  // let b = &a[..5];
-  // println!("{}", b);
-}
-
-// also valid, but less flexible and idiomatic
-// fn first_word(s: &String) -> &str {
-fn first_word(s: &str) -> &str {
-  for (i, &item) in s.as_bytes().iter().enumerate() {
-    if item == b' ' {
-      return &s[0..i];
-    }
-  }
-
-  &s[..]
 }
 
 fn printing_structs() {
