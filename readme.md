@@ -1,3 +1,5 @@
+Learning Rust playground which will eventually evolve into a simple server.
+
 ## Useful commands
 
 ```bash
