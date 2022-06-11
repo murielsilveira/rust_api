@@ -12,5 +12,5 @@ pub fn nth_fibonacci(n: u32) -> u32 {
   if n <= 2 {
     return 1;
   }
-  return nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
+  nth_fibonacci(n - 1) + nth_fibonacci(n - 2)
 }
