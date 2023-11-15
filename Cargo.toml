@@ -1,7 +1,9 @@
-[package]
-name = "rust-simple-api"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = [
+  "crates/learn",
+]
 
-[dependencies]
-rand = "0.8.5"
+# warning: some crates are on edition 2021 which defaults to `resolver = "2"`,
+# but virtual workspaces default to `resolver = "1"`.
+# to use the edition 2021 resolver, specify `workspace.resolver = "2"` in the workspace root's manifest
+resolver = "2"
