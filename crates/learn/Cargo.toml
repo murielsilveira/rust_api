@@ -1,5 +1,5 @@
 [package]
-name = "rust-simple-api"
+name = "learn"
 version = "0.1.0"
 edition = "2021"
 
